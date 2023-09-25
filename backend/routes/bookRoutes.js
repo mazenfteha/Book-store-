@@ -13,7 +13,7 @@ router.route("/").post(saveNewBook)
 router.route("/").get(getAllBooks)
 router.route('/:id').get(getBookById)
 router.route('/:id').put(updateBookById)
-router.route('/:id').put(deleteBook)
+router.route('/:id').delete(deleteBook)
 
 
 module.exports = router ;
