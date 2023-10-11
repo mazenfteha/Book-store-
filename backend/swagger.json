@@ -45,7 +45,8 @@
                                         "type": "interger",
                                         "required": true
                                     }
-                                }
+                                },
+                                "required": ["title", "author", "publisherYear"]
                             }
                         }
                     }
@@ -53,6 +54,98 @@
                 "response": {
                     "201": {
                         "description": "New book created"
+                    }
+                }
+            },
+            "get": {
+                "summary" : "Get all books",
+                "response" :{
+                    "200": {
+                        "description": "List of books"
+                    }
+                }
+            }
+        },
+        "/api/v1/books/{id}": {
+            "get" : {
+                "summary" : "Get one book by id",
+                "parameters" : [
+                    {
+                        "name" : "id",
+                        "in" : "path",
+                        "required": true,
+                        "schema" : {
+                            "type" : "interger"
+                        }
+                    }
+                ],
+                "response" : {
+                    "200": {
+                        "description": "The requested book"
+                    }
+                }
+            },
+            "put" : {
+                "summary": "Update one book by specific id",
+                "parameters" : [
+                    {
+                        "name" : "id",
+                        "in" : "path",
+                        "required": true,
+                        "schema" : {
+                            "type" : "interger"
+                        }
+                    }
+                ],
+                "requstBody" :{
+                    "description" : "Book data to update",
+                    "required" : true,
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type": "object",
+                                "properties" : {
+                                    "title": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "athor" : {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "publisherYear" : {
+                                        "type": "interger",
+                                        "required": true
+                                    }
+                                },
+                                "required": ["title", "author", "publisherYear"]
+                            }
+                        }
+                    }
+                },
+                "response" : {
+                    "200": {
+                        "description": "The requested book Updated",
+                        "message" : "Book updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "delete one book by specific id",
+                "parameters" : [
+                    {
+                        "name" : "id",
+                        "in" : "path",
+                        "required": true,
+                        "schema" : {
+                            "type" : "interger"
+                        }
+                    }
+                ],
+                "response" : {
+                    "200": {
+                        "description": "The requested book deleted",
+                        "message" : "Book deleted successfully"
                     }
                 }
             }
