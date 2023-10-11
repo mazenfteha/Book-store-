@@ -1,13 +1,18 @@
 const  express = require('express') ;
 const  dotenv =  require('dotenv');
 const cors = require('cors')
+const swaggerUi = require('swagger-ui-express');
 
+const swaggerDocument = require("./swagger.json")
 const bookRoute = require('./routes/bookRoutes')
 require("./config/db");
 dotenv.config();
 
 
 const app = express()
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 
 // Middleware for parsing request body
 app.use(express.json());
