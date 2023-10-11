@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Book store",
-        "description": "Book store project berform CRUD operations",
+        "description": "Book store project performing CRUD operations",
         "version": "0.1.9"
     },
     "servers": [
@@ -14,52 +14,56 @@
     "paths": {
         "/": {
             "get": {
-                "summary" : "send text MERN Stack Book Store project",
-                "response": {
+                "summary": "Send text MERN Stack Book Store project",
+                "responses": {
                     "234": {
                         "description": "Landing page"
                     }
                 }
             }
         },
-        "/api/v1/books" : {
-            "post" : {
-                "summary" : "Create new book",
-                "requstBody": {
-                    "description" : "Book data to create",
-                    "required" : true,
-                    "content" : {
-                        "application/json" : {
-                            "schema" : {
+        "/api/v1/books": {
+            "post": {
+                "summary": "Create new book",
+                "requestBody": {
+                    "description": "Book data to create",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
                                 "type": "object",
-                                "properties" : {
+                                "properties": {
                                     "title": {
                                         "type": "string",
                                         "required": true
                                     },
-                                    "athor" : {
+                                    "author": {
                                         "type": "string",
                                         "required": true
                                     },
-                                    "publisherYear" : {
-                                        "type": "interger",
+                                    "publisherYear": {
+                                        "type": "integer",
                                         "required": true
                                     }
                                 },
-                                "required": ["title", "author", "publisherYear"]
+                                "required": [
+                                    "title",
+                                    "author",
+                                    "publisherYear"
+                                ]
                             }
                         }
                     }
                 },
-                "response": {
+                "responses": {
                     "201": {
                         "description": "New book created"
                     }
                 }
             },
             "get": {
-                "summary" : "Get all books",
-                "response" :{
+                "summary": "Get all books",
+                "responses": {
                     "200": {
                         "description": "List of books"
                     }
@@ -67,85 +71,89 @@
             }
         },
         "/api/v1/books/{id}": {
-            "get" : {
-                "summary" : "Get one book by id",
-                "parameters" : [
+            "get": {
+                "summary": "Get one book by id",
+                "parameters": [
                     {
-                        "name" : "id",
-                        "in" : "path",
+                        "name": "id",
+                        "in": "path",
                         "required": true,
-                        "schema" : {
-                            "type" : "interger"
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
-                "response" : {
+                "responses": {
                     "200": {
                         "description": "The requested book"
                     }
                 }
             },
-            "put" : {
+            "put": {
                 "summary": "Update one book by specific id",
-                "parameters" : [
+                "parameters": [
                     {
-                        "name" : "id",
-                        "in" : "path",
+                        "name": "id",
+                        "in": "path",
                         "required": true,
-                        "schema" : {
-                            "type" : "interger"
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
-                "requstBody" :{
-                    "description" : "Book data to update",
-                    "required" : true,
-                    "content" : {
-                        "application/json" : {
-                            "schema" : {
+                "requestBody": {
+                    "description": "Book data to update",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
                                 "type": "object",
-                                "properties" : {
+                                "properties": {
                                     "title": {
                                         "type": "string",
                                         "required": true
                                     },
-                                    "athor" : {
+                                    "author": {
                                         "type": "string",
                                         "required": true
                                     },
-                                    "publisherYear" : {
-                                        "type": "interger",
+                                    "publisherYear": {
+                                        "type": "integer",
                                         "required": true
                                     }
                                 },
-                                "required": ["title", "author", "publisherYear"]
+                                "required": [
+                                    "title",
+                                    "author",
+                                    "publisherYear"
+                                ]
                             }
                         }
                     }
                 },
-                "response" : {
+                "responses": {
                     "200": {
-                        "description": "The requested book Updated",
-                        "message" : "Book updated successfully"
+                        "description": "The requested book updated",
+                        "message": "Book updated successfully"
                     }
                 }
             },
             "delete": {
-                "summary": "delete one book by specific id",
-                "parameters" : [
+                "summary": "Delete one book by specific id",
+                "parameters": [
                     {
-                        "name" : "id",
-                        "in" : "path",
+                        "name": "id",
+                        "in": "path",
                         "required": true,
-                        "schema" : {
-                            "type" : "interger"
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],
-                "response" : {
+                "responses": {
                     "200": {
                         "description": "The requested book deleted",
-                        "message" : "Book deleted successfully"
+                        "message": "Book deleted successfully"
                     }
                 }
             }
